@@ -46,11 +46,3 @@ src/
 ├── utils/        validaciones
 └── types.ts      tipos (Task, User)
 ```
-
-## Decisiones técnicas
-
-- Las pantallas no acceden a AsyncStorage directamente: lo hacen a través de repositorios en `storage/`.
-- Las contraseñas se guardan en texto plano porque la consigna lo permite; en una app real se guardaría un hash.
-- `notificationService.ts` importa módulos internos de `expo-notifications` a propósito: el import oficial lanza un error en Expo Go para Android (SDK 57) por un registro automático de notificaciones push que no usamos.
-
-
