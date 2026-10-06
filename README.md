@@ -49,3 +49,7 @@ src/
 
 
 Video demo: <https://www.youtube.com/watch?v=j3MzlgxIgHs>
+
+## Resultado de los tests
+
+![Resultado de los tests](docs/tests.png)
