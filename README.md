@@ -46,3 +46,6 @@ src/
 ├── utils/        validaciones
 └── types.ts      tipos (Task, User)
 ```
+
+
+Video demo: <https://www.youtube.com/watch?v=j3MzlgxIgHs>
