@@ -11,8 +11,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { PrimaryButton } from '../components/PrimaryButton';
 import { TaskItem } from '../components/TaskItem';
 import { useAuth } from '../context/AuthContext';
-import { useTasksContext } from '../context/TasksContext';
 import { RootStackParamList } from '../navigation/types';
+import { useTasksStore } from '../store/tasksStore';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
@@ -22,9 +22,14 @@ type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
  */
 export function HomeScreen({ navigation }: Props) {
  const { currentUser, logout } = useAuth();
- const { tasks, loading, error, deleteTask, toggleTask } = useTasksContext();
+ // Cada selector suscribe la pantalla solo a ese pedazo del store.
+ const tasks = useTasksStore((state) => state.tasks);
+ const hydrated = useTasksStore((state) => state.hydrated);
+ const error = useTasksStore((state) => state.error);
+ const deleteTask = useTasksStore((state) => state.deleteTask);
+ const toggleTask = useTasksStore((state) => state.toggleTask);
 
- if (loading) {
+ if (!hydrated) {
   return (
    <View style={styles.center}>
     <ActivityIndicator size="large" />

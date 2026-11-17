@@ -1,3 +1,17 @@
+/** Ubicación guardada junto a una tarea. */
+export interface TaskLocation {
+ latitude: number;
+ longitude: number;
+ // Dirección aproximada obtenida por geocodificación inversa (puede no estar disponible).
+ address?: string;
+}
+
+/** Contacto de la agenda asociado a una tarea (responsable). */
+export interface TaskContact {
+ name: string;
+ phone?: string;
+}
+
 /** Una tarea del gestor. */
 export interface Task {
  id: string;
@@ -8,6 +22,12 @@ export interface Task {
  reminderAt?: number;
  // (comentario del id)
  notificationId?: string;
+ // Parcial 2: recursos del dispositivo asociados a la tarea.
+ photoUri?: string;
+ location?: TaskLocation;
+ contact?: TaskContact;
+ // Id del evento creado en el calendario del dispositivo.
+ calendarEventId?: string;
 }
 
 
